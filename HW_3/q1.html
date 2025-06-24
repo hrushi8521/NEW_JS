@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        PRODUCT NAME: <input type="inp" id="inp">
+        <button id="btn">ADD PRODUCT</button>
+        <ul id="ul">
+            <li>LAPTOP</li>
+            <li>I PAD</li>
+            <li>SAMSUNG</li>
+        </ul>
+    </div>
+    <script>
+        const btn = document.getElementById("btn");
+        
+        btn.addEventListener('click', ()=>{
+
+            const inp = document.getElementById("inp");
+            const ul = document.getElementById("ul");
+            const new_product = document.createElement("li");
+            
+            new_product.innerText = inp.value;
+            ul.append(new_product);
+            
+            localStorage.setItem("LI:", inp.value);
+        })
+    </script>
+</body>
+</html>

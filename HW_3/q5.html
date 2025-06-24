@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Form</title>
+</head>
+<body>
+    <h3>Order Form</h3>
+    <br>
+    <b>Customer Name: </b>
+    <input id="name" type="text">
+    <br>
+    <b>Product: </b>
+    <input id="product" type="text">
+    <br>
+    <b>Address: </b>
+    <input id="address" type="text">
+    <br>
+    <br>
+    <button id="submit"> SUBMIT </button>
+
+    <script>
+        let stock = ["realme", "poco", "milk", "bread", "glue"] 
+        document.getElementById("submit").addEventListener('click', ()=>{
+            const name = document.getElementById("name").value
+            const product = document.getElementById("product").value
+            const address = document.getElementById("address").value
+
+            //^ means start of string, $ means end of string
+            //\s means space, \d means digit, [A-Za-z] means any letter, @ is used as it is
+
+            const nameregx = /^[A-Za-z]+$/;
+            
+            if(nameregx.test(name) && address !== "" && stock.includes(product)){
+                alert("Order Placed");
+                const order = {
+                    pname : name,
+                    pproduct : product,
+                    paddress : address
+                }
+                
+                const order_details = JSON.parse(localStorage.getItem('orders')) || [];
+                order_details.push(order);
+                localStorage.setItem('orders', JSON.stringify(order_details));
+
+            }else{
+                alert("Invalid Order");
+            }
+        })
+        
+    </script>
+</body>
+</html>

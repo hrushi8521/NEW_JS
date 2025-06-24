@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Form</title>
+</head>
+<body>
+    <h2>Product Form: </h2>
+    <br>
+    <b>Product Name: </b> <input id="name" type="text">
+    <br>
+    <b>Price: </b><input id="price" type="number">
+    <br>
+    <b>Quantity: </b><input id="quantity" type="number">
+    <br>
+    <button id="submit">Submit</button>
+
+    <script>
+        
+        document.getElementById("submit").addEventListener("click", ()=>{
+            const name = document.getElementById('name').value
+            const price = document.getElementById('price').value
+            const quantity = document.getElementById('quantity').value
+
+            if(name === ""){
+                alert("Please enter a product name")
+                return
+            }
+
+            if(price <= 0 || isNaN(price)){
+                alert("Invalid price ! ")
+                return
+            }
+
+            if(quantity <= 0 || isNaN(quantity)){
+                alert("Invalid quantity ! ")
+                return
+            }
+
+            const product = {
+                name: name,
+                price: price,
+                quantity: quantity
+            }
+
+            const product_details = JSON.parse(localStorage.getItem('products_details')) || []
+            
+            product_details.push(product)
+            localStorage.setItem('products_details', JSON.stringify(product_details))
+            alert("Product added.")
+
+        })
+    </script>
+</body>
+</html>

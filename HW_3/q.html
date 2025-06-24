@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOVER & KEY-PRESS</title>
+</head>
+<body>
+    <button class="btn" id="btn-1">HOVER</button>
+    <br><br>
+    <button class="btn" id="btn-2">KEY PRESS</button>
+    <br><br>
+    <button class="btn" id="btn-3">CHANGE COLOR</button>
+
+    <script>
+        //HOVER
+        const btn1 = document.getElementById("btn-1")
+        btn1.addEventListener("mouseover",()=>{
+            alert("MOUSE IS OVER THE BUTTON.")
+        })
+
+        //KEYPRESS
+        const btn2 = document.getElementById("btn-2")
+        btn2.addEventListener("keypress", ()=>{
+            alert("KEY IS PRESSED.")
+        })
+
+        // CHANGE COLOR ON DOUBLE CLICK
+        const allButtons = document.getElementsByClassName("btn");
+        const btn3 = document.getElementById("btn-3");
+
+        btn3.addEventListener("dblclick", () => {
+            for (let btn of allButtons) {
+                btn.style.backgroundColor = "teal";
+            }
+        });
+        
+
+        
+    </script>
+</body>
+</html>

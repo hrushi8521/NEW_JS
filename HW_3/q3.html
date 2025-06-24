@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <!-- <h3>Retrived from local storage</h3> -->
+        <button id="sc">SHOW COUNT</button>
+        <br><br>
+        <button id="reset">Reset cart</button>
+        <br><br>
+        <input id="inp" type="text">
+        <button id="addTocart" onclick="addTocart()">Add to cart</button>
+        <ul id="ul">
+            <li>Mobile</li>
+        </ul>
+    </div>
+
+    <script>
+        
+        let count = 0;
+        let products2 = JSON.parse(localStorage.getItem('products2')) || [];
+
+        const addTocart = document.getElementById('addTocart')
+        
+        //addtocart
+        addTocart.addEventListener('click',()=>{
+            const inp = document.getElementById('inp')
+            const ul = document.getElementById('ul')
+            const new_product = document.createElement('li')
+            
+            new_product.innerText = inp.value;
+
+            if(new_product !== ""){
+
+                products2.push(inp.value)
+                ul.append(new_product)
+                count = count + 1
+
+                localStorage.setItem('products2', JSON.stringify(products2))
+                localStorage.setItem('count', count);
+                alert("Product added to cart.")
+            }else{
+                alert("Enter valid product name.")
+            }
+
+        
+        })
+            
+        //showcount
+        const sc = document.getElementById("sc")
+        sc.addEventListener('click', ()=>{
+            const count_val = localStorage.getItem('count')
+            const product_list = JSON.parse(localStorage.getItem('products2')) || [];
+            
+            if(product_list.length > 0){
+
+                alert(`The button was pressed ${count_val} times. \nProducts in cart : \n ${product_list}`);
+            }else{
+                alert("Cart is empty.")
+            }
+
+        })
+
+
+        //reset cart
+        document.getElementById('reset').addEventListener('click', ()=>{
+            localStorage.removeItem('products2')
+            localStorage.removeItem('count')
+            document.getElementById('ul').innerHTML = ""
+            
+            count = 0 // for alert to show 0
+            products2 = []// for alert to show no elements
+
+            alert(`Count reset to ${count} \n\n Products in cart: ${products2}`)
+        })
+    </script>
+
+</body>
+</html>
