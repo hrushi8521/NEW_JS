@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn1">SUBMIT</button>
+    <br>
+    <br>
+    <button onclick="new_alert()">SUBMIT 2</button>
+    <script>
+        //Method-1
+        const btn1 = document.getElementById('btn1')
+        btn1.addEventListener('click',()=>{
+            alert("HELLO USER!!!")
+        })
+
+
+        //Method-2 :- USing user defined function
+        function new_alert(){
+            alert("HELLO USER")
+        }
+    </script>
+</body>
+</html>

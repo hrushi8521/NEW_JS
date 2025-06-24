@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        LI: <input type="inp" id="inp">
+        <button id="btn">SUBMIT</button>
+        <ul id="ul">
+            <li>A</li>
+            <li>B</li>
+            <li>C</li>
+        </ul>
+    </div>
+    <script>
+        const btn = document.getElementById("btn");
+        const inp = document.getElementById("inp");
+        const ul = document.getElementById("ul");
+        const new_li = document.createElement("li");
+        btn.addEventListener('click', ()=>{
+            new_li.innerText = inp.value;
+            ul.append(new_li);
+            localStorage.setItem("LI:", inp.value);
+        })
+    </script>
+</body>
+</html>
