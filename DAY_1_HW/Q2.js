@@ -1,11 +1,11 @@
-const calculateGrade = (grade)=>{
-    if (grade >= 90){
+const calculateGrade = (score)=>{
+    if (score >= 90){
         console.log("A");
     }
-    else if( grade < 90 && grade >= 60){
+    else if( score < 90 && score >= 60){
         console.log("B");
     }
-    else if(grade < 60 && grade >= 40){
+    else if(score < 60 && score >= 40){
         console.log("C");
     }
     else{
